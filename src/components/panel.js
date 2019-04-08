@@ -12,8 +12,10 @@ class Panel extends Component {
     super(props);
   }
   render() {
+    const { value } = this.props;
     return(
       <div>
+        <h1>{value}</h1>
         {cardInfo.map((item,index) =>
           <div key={index}>
             <Card info={item}/>
