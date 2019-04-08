@@ -22,7 +22,7 @@ body{
   background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);
   background-size: 25px 25px;
   background-repeat:no-repeat;
-   background-attachment:scroll;
+  background-attachment:scroll;
 }
 
 a {

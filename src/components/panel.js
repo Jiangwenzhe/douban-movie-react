@@ -6,6 +6,7 @@ import Card from './card';
 
 const cardInfo = data.subjects;
 console.log(cardInfo);
+
 class Panel extends Component {
   constructor(props) {
     super(props);
@@ -22,5 +23,4 @@ class Panel extends Component {
     )
   }
 }
-
 export default Panel;
