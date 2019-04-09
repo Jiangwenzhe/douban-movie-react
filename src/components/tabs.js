@@ -1,7 +1,9 @@
 import React  from 'react';
-import Panel from './panel';
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import './style.css';
+import Panel from './panel';
+import TopPanel from './TopPanel';
+import data from './data.json'
 
 const Tabs = () =>
   <Router>
@@ -45,20 +47,20 @@ const SingleTabButton = ({ tabName, icon , to, activeOnlyWhenExact }) =>
   />
 
 
-const TopPanel = () =>
-<div>
-  <Panel value="Top250" />
-</div>
+const cardInfo = data.subjects;
+
 
 const OnTheaterPanel = () =>
-<div>
-  <Panel value="onTheater" />
-</div>
+  <Panel
+    value="onTheater"
+    cardInfo = {cardInfo}
+  />
 
 const SearchPanel = () =>
-<div>
-  <Panel value="onSearch" />
-</div>
+  <Panel
+    value="onSearch"
+    cardInfo = {cardInfo}
+  />
 
 
 export default Tabs
