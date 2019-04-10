@@ -1,9 +1,9 @@
 import React  from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import './style.css';
-import Panel from './panel';
-import TopPanel from './TopPanel';
+import Panel from './Panel';
 import data from './data.json'
+import Cards from './Cards';
 
 const Tabs = () =>
   <Router>
@@ -28,7 +28,7 @@ const Tabs = () =>
       </footer>
       {/* 默认路由 */}
       <Route exact path="/" component={() => <Redirect to="/top250"/>} />
-      <Route exact path="/top250" component={TopPanel} />
+      <Route exact path="/top250" component={Panel} />
       <Route path="/onTheater" component={OnTheaterPanel} />
       <Route path="/search" component={SearchPanel }/>
     </div>
@@ -51,13 +51,13 @@ const cardInfo = data.subjects;
 
 
 const OnTheaterPanel = () =>
-  <Panel
+  <Cards
     value="onTheater"
     cardInfo = {cardInfo}
   />
 
 const SearchPanel = () =>
-  <Panel
+  <Cards
     value="onSearch"
     cardInfo = {cardInfo}
   />
