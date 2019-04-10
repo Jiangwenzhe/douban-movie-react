@@ -28,7 +28,7 @@ const Tabs = () =>
       </footer>
       {/* 默认路由 */}
       <Route exact path="/" component={() => <Redirect to="/top250"/>} />
-      <Route exact path="/top250" component={Panel} />
+      <Route exact path="/top250" component={TopPanel} />
       <Route path="/onTheater" component={OnTheaterPanel} />
       <Route path="/search" component={SearchPanel }/>
     </div>
@@ -49,12 +49,12 @@ const SingleTabButton = ({ tabName, icon , to, activeOnlyWhenExact }) =>
 
 const cardInfo = data.subjects;
 
+const TopPanel = () =>
+  <Panel requestURL="https://api.douban.com/v2/movie/top250" value="topmovie"/>
+
 
 const OnTheaterPanel = () =>
-  <Cards
-    value="onTheater"
-    cardInfo = {cardInfo}
-  />
+  <Panel requestURL="https://api.douban.com/v2/movie/in_theaters" value="in_theater"/>
 
 const SearchPanel = () =>
   <Cards

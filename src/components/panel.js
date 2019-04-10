@@ -3,7 +3,7 @@ import Cards from './Cards';
 import Loading from './laoding';
 import josnp from 'jsonp';
 
-const PATH_BASE = 'https://api.douban.com/v2/movie/top250';
+
 
 
 class Panel extends Component {
@@ -26,10 +26,11 @@ class Panel extends Component {
 
   getTopMovieData() {
     const {startNum, countNum } = this.state;
+    const { requestURL } = this.props;
     this.setState({
       isLoading: true
     });
-    let url = `${PATH_BASE}?start=${startNum}&count=${countNum}`
+    let url = `${requestURL}?start=${startNum}&count=${countNum}`
     josnp(url,null,
       (error, data) => {
         if(error) {
@@ -47,12 +48,14 @@ class Panel extends Component {
   }
 
   setTopMovieData(data) {
-    const { cardInfo } = this.state;
-    const { subjects } = data;
+    const { cardInfo, startNum, countNum, hasMore } = this.state;
+    const { subjects, total } = data;
     if(cardInfo) {
       this.setState({
-        cardInfo: Array.from(new Set(cardInfo.concat(subjects)))
+        cardInfo: Array.from(new Set(cardInfo.concat(subjects))),
+        hasMore: (total>=(startNum+ countNum))
       })
+      console.log(hasMore)
 
     } else {
       this.setState({
@@ -62,7 +65,7 @@ class Panel extends Component {
   }
 
   handleScroll(){
-    const { isLoading } = this.state;
+    const { isLoading, hasMore } = this.state;
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
@@ -75,7 +78,7 @@ class Panel extends Component {
     })
     if (windowBottom >= docHeight) {
       console.log('页面到底啦')
-      if(!isLoading) {
+      if(!isLoading && hasMore) {
         this.getTopMovieData();
       }
       console.log('发送请求。。。')
@@ -83,7 +86,8 @@ class Panel extends Component {
   }
 
   try_restore_component() {
-    let panelData = window.sessionStorage.getItem('tempdata');
+    const { value } = this.props
+    let panelData = window.sessionStorage.getItem(`${value}`);
     console.log('try_restore_component');
     if(panelData) {
       panelData = JSON.parse(panelData);
@@ -96,7 +100,6 @@ class Panel extends Component {
         countNum: countNum,
         hasMore: hasMore,
         isLoading: isLoading,
-        scrollpx: scrollpx
       });
     }
   }
@@ -126,9 +129,8 @@ class Panel extends Component {
       countNum: countNum,
       hasMore: hasMore,
       isLoading: false,
-      scrollpx: scrollpx
     }
-    window.sessionStorage.setItem('tempdata', JSON.stringify(panelData));
+    window.sessionStorage.setItem(`${this.props.value}`, JSON.stringify(panelData));
   }
 
   render() {
