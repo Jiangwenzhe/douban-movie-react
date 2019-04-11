@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { Component}  from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import './style.css';
 import Panel from './Panel';
@@ -56,11 +56,28 @@ const TopPanel = () =>
 const OnTheaterPanel = () =>
   <Panel requestURL="https://api.douban.com/v2/movie/in_theaters" value="in_theater"/>
 
-const SearchPanel = () =>
-  <Cards
-    value="onSearch"
-    cardInfo = {cardInfo}
-  />
+class SearchPanel extends Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="search-area">
+          <input type="text" id="inputvalue" placeholder="搜索电影" />
+          <span className="button" id="searchBtn"> 搜索</span>
+        </div>
+        <Cards
+            value="onSearch"
+            cardInfo = {cardInfo}
+          />
+      </div>
+    );
+  }
+}
+
+
 
 
 export default Tabs
