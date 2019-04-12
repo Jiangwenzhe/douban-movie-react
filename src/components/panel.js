@@ -71,8 +71,8 @@ class Panel extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
-    console.log(windowBottom, "  ---   ", docHeight)
-    console.log('windowBottom: ', windowBottom)
+    // console.log(windowBottom, "  ---   ", docHeight)
+    // console.log('windowBottom: ', windowBottom)
     this.setState({
       scrollpx: window.pageYOffset
     })
@@ -106,8 +106,8 @@ class Panel extends Component {
 
   componentDidMount() {
     console.log('did Mount')
-    const { startNum, countNum, scrollpx } = this.state;
-    console.log('在did Mount中的', scrollpx)
+    const { startNum , scrollpx } = this.state;
+    console.log('在did Mount中的', scrollpx);
     window.addEventListener("scroll", this.handleScroll);
     if(startNum === 0) {
       console.log('一开始获取数据')
@@ -116,10 +116,20 @@ class Panel extends Component {
     window.scrollTo(0, scrollpx);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.requestURL != prevProps.requestURL) {
+      this.setState({
+        startNum: 0,
+        cardInfo: null
+      })
+      this.getTopMovieData();
+    }
+  }
+
   componentWillUnmount() {
     console.log('unmount')
     window.removeEventListener("scroll", this.handleScroll);
-    const { cardInfo, startNum, countNum, hasMore, isLoading, scrollpx } = this.state;
+    const { cardInfo, startNum, countNum, hasMore, scrollpx } = this.state;
     console.log('保存的电影数据', cardInfo);
     console.log('滚动的位置', scrollpx);
     let panelData = {
@@ -134,11 +144,11 @@ class Panel extends Component {
   }
 
   render() {
-    const {cardInfo, isLoading, scrollpx} = this.state;
+    const { cardInfo, isLoading } = this.state;
 
     return (
       <div>
-       {cardInfo && <Cards value="Top250" cardInfo = {cardInfo}  />}
+       {cardInfo && <Cards cardInfo = {cardInfo}  />}
        {isLoading && <Loading />}
       </div>
     );

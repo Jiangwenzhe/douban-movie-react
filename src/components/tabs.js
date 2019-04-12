@@ -59,19 +59,62 @@ const OnTheaterPanel = () =>
 class SearchPanel extends Component {
   constructor() {
     super();
+    this.state = {
+      searchTerm: '',
+      url: ''
+    }
+
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.try_restore_component = this.try_restore_component.bind(this);
+    this.try_restore_component();
+  }
+
+  onSearchChange(event) {
+    this.setState({ searchTerm: event.target.value });
+  }
+
+  onSearchSubmit(event) {
+    // event.preventDefault();
+    const { searchTerm } = this.state;
+    this.setState({
+      url: `https://api.douban.com/v2/movie/search?q=${searchTerm}`
+    });
+    this.forceUpdate();
+  }
+
+  try_restore_component() {
+    let searchData = window.sessionStorage.getItem('searchData');
+    console.log(searchData)
+    if(searchData) {
+      searchData = JSON.parse(searchData);
+      let { url , searchTerm} = searchData;
+      this.state = {
+        url: url,
+        searchTerm: searchTerm
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    const { url, searchTerm } = this.state;
+    console.log(url)
+    let searchData = {
+      url: url,
+      searchTerm: searchTerm
+    }
+    window.sessionStorage.setItem('searchData', JSON.stringify(searchData));
   }
 
   render() {
+    const { url , searchTerm } = this.state
     return (
       <div>
         <div className="search-area">
-          <input type="text" id="inputvalue" placeholder="搜索电影" />
-          <span className="button" id="searchBtn"> 搜索</span>
+          <input type="text"  placeholder="搜索电影" value={searchTerm} onChange={this.onSearchChange}/>
+          <span className="button" id="searchBtn" onClick={this.onSearchSubmit}> 搜索</span>
         </div>
-        <Cards
-            value="onSearch"
-            cardInfo = {cardInfo}
-          />
+        {url && <Panel requestURL={url} value={searchTerm}/>}
       </div>
     );
   }
