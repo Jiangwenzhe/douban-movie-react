@@ -71,7 +71,6 @@ class SearchPanel extends Component {
   }
 
   onSearchSubmit(event) {
-    // event.preventDefault();
     const { searchTerm } = this.state;
     this.setState({
       url: `https://api.douban.com/v2/movie/search?q=${searchTerm}`
