@@ -1,13 +1,13 @@
 {
-  "main.css": "/douban-movie-react/static/css/main.39bd0301.chunk.css",
-  "main.js": "/douban-movie-react/static/js/main.5f994d54.chunk.js",
-  "main.js.map": "/douban-movie-react/static/js/main.5f994d54.chunk.js.map",
+  "main.css": "/douban-movie-react/static/css/main.f16a811e.chunk.css",
+  "main.js": "/douban-movie-react/static/js/main.00ad95d9.chunk.js",
+  "main.js.map": "/douban-movie-react/static/js/main.00ad95d9.chunk.js.map",
   "runtime~main.js": "/douban-movie-react/static/js/runtime~main.0425126c.js",
   "runtime~main.js.map": "/douban-movie-react/static/js/runtime~main.0425126c.js.map",
   "static/js/2.bb18f64b.chunk.js": "/douban-movie-react/static/js/2.bb18f64b.chunk.js",
   "static/js/2.bb18f64b.chunk.js.map": "/douban-movie-react/static/js/2.bb18f64b.chunk.js.map",
   "index.html": "/douban-movie-react/index.html",
-  "precache-manifest.044889b4971a9408a83bb09e4e06b97c.js": "/douban-movie-react/precache-manifest.044889b4971a9408a83bb09e4e06b97c.js",
+  "precache-manifest.1092f7abf237d3145c3515c6e09ce2d8.js": "/douban-movie-react/precache-manifest.1092f7abf237d3145c3515c6e09ce2d8.js",
   "service-worker.js": "/douban-movie-react/service-worker.js",
-  "static/css/main.39bd0301.chunk.css.map": "/douban-movie-react/static/css/main.39bd0301.chunk.css.map"
+  "static/css/main.f16a811e.chunk.css.map": "/douban-movie-react/static/css/main.f16a811e.chunk.css.map"
 }

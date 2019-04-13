@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/douban-movie-react/precache-manifest.044889b4971a9408a83bb09e4e06b97c.js"
+  "/douban-movie-react/precache-manifest.1092f7abf237d3145c3515c6e09ce2d8.js"
 );
 
 workbox.clientsClaim();
