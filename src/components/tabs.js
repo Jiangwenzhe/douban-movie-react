@@ -2,8 +2,6 @@ import React, { Component}  from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import './style.css';
 import Panel from './Panel';
-import data from './data.json'
-import Cards from './Cards';
 
 const Tabs = () =>
   <Router>
@@ -11,26 +9,26 @@ const Tabs = () =>
     <footer className="backdrop-blur">
       <SingleTabButton
         activeOnlyWhenExact={true}
-        to="/top250"
+        to={process.env.PUBLIC_URL + '/top250'}
         icon="iconfont icon-paihangbang"
         tabName="排行榜"
       />
       <SingleTabButton
-        to="/onTheater"
+        to={process.env.PUBLIC_URL + '/onTheater'}
         icon="iconfont icon-dianying"
         tabName="正在上映"
       />
       <SingleTabButton
-        to="/search"
+        to={process.env.PUBLIC_URL + '/search'}
         icon="iconfont icon-search"
         tabName="搜索"
       />
       </footer>
       {/* 默认路由 */}
-      <Route exact path="/" component={() => <Redirect to="/top250"/>} />
-      <Route exact path="/top250" component={TopPanel} />
-      <Route path="/onTheater" component={OnTheaterPanel} />
-      <Route path="/search" component={SearchPanel }/>
+      <Route exact path={process.env.PUBLIC_URL + '/'} component={() => <Redirect to={process.env.PUBLIC_URL + '/top250'}/>} />
+      <Route exact path={process.env.PUBLIC_URL + '/top250'} component={TopPanel} />
+      <Route path={process.env.PUBLIC_URL + '/onTheater'} component={OnTheaterPanel} />
+      <Route path={process.env.PUBLIC_URL + '/search'} component={SearchPanel}/>
     </div>
   </Router>
 
@@ -46,8 +44,6 @@ const SingleTabButton = ({ tabName, icon , to, activeOnlyWhenExact }) =>
     )}
   />
 
-
-const cardInfo = data.subjects;
 
 const TopPanel = () =>
   <Panel requestURL="https://api.douban.com/v2/movie/top250" value="topmovie"/>

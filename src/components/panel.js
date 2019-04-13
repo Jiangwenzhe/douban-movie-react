@@ -117,7 +117,7 @@ class Panel extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.requestURL != prevProps.requestURL) {
+    if (this.props.requestURL !== prevProps.requestURL) {
       this.setState({
         startNum: 0,
         cardInfo: null
