@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/douban-movie-react/static/js/runtime~main.0425126c.js"
   },
   {
-    "revision": "169ce815193b0b2bb440",
-    "url": "/douban-movie-react/static/js/main.63aeca42.chunk.js"
+    "revision": "7b390f23c85126557687",
+    "url": "/douban-movie-react/static/js/main.0aa406ac.chunk.js"
   },
   {
     "revision": "2e64b3b50d8bd842032a",
     "url": "/douban-movie-react/static/js/2.bb18f64b.chunk.js"
   },
   {
-    "revision": "169ce815193b0b2bb440",
+    "revision": "7b390f23c85126557687",
     "url": "/douban-movie-react/static/css/main.f16a811e.chunk.css"
   },
   {
-    "revision": "ee5700872d909c6de0ac8f0877f27046",
+    "revision": "50bd2390f0ddd811ef9cd9a8df91e06e",
     "url": "/douban-movie-react/index.html"
   }
 ];
